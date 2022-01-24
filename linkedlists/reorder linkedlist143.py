@@ -44,7 +44,10 @@ class LinkedList:
         
    
         
-    
+    # logic is 
+    # 1)bisect into two halves
+    # 2) get two pointer 
+    # 3)go nuts while appending one after the other 
         
     def reorder_linkedlist(self):
         head = self.head
