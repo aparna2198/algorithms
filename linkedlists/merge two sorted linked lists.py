@@ -42,12 +42,14 @@ class LinkedList:
         print("Null")
         
     @staticmethod
-    def merge(ll1head,ll2head):
+    def merge(ll1,ll2):
+        ll1head = ll1.head
+        ll2head = ll2.head
         ll3 = LinkedList()
         if not ll1head:
-            return ll2head
+            return ll2
         if not ll2head:
-            return ll1head
+            return ll1
         
         while ll1head and ll2head:
             if ll1head.data<=ll2head.data:
@@ -66,13 +68,24 @@ class LinkedList:
             ll2head = ll2head.next
         
         return ll3
+    
+    def reverse_likedlist(self):
+        second = self.head
+        prev = None
+        while (second):
+            tmp = second.next
+            second.next = prev
+            prev = second
+            second = tmp
+        self.head = prev
                 
-                
-        
 ll1 = LinkedList()
+
 ll1.add_node_last(32)
 ll1.add_node_last(65)
 ll1.add_node_last(99) 
+ll1.print_linkedlist() 
+ll1.reverse_likedlist()
 ll1.print_linkedlist() 
 
 ll2 = LinkedList()
@@ -83,5 +96,5 @@ ll2.add_node_last(98)
 ll2.add_node_last(100) 
 ll2.print_linkedlist()
 
-ll3 = LinkedList.merge(ll1.head,ll2.head)
+ll3 = LinkedList.merge(ll1,ll2)
 ll3.print_linkedlist() 
