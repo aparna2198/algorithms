@@ -70,16 +70,21 @@ class LinkedList:
         
 ll1 = LinkedList()
 
-ll1.add_node_last(2)
-ll1.add_node_last(4)
-ll1.add_node_last(3) 
+ll1.add_node_last(9)
+ll1.add_node_last(9)
+ll1.add_node_last(9) 
+ll1.add_node_last(9)
+ll1.add_node_last(9)
+ll1.add_node_last(9)
+ll1.add_node_last(9)
 ll1.print_linkedlist() 
 
 
 ll2 = LinkedList()
-ll2.add_node_last(5)
-ll2.add_node_last(6)
-ll2.add_node_last(4)
+ll2.add_node_last(9)
+ll2.add_node_last(9)
+ll2.add_node_last(9)
+ll2.add_node_last(9)
 ll2.print_linkedlist()
 
 ll3 = LinkedList.add_twonumbers(ll1.head,ll2.head)
