@@ -50,10 +50,14 @@ class LinkedList:
         
         prev,curr = dummy, self.head
         
+        
+        
         while curr:
             nxt = curr.next
             if curr.data == data:
+                # here the dummy pointer next is changed the first time as only at that time the prev is pointing to dummy later on prev pointer moved forward
                 prev.next = nxt
+                
             else:
                 prev = curr
             curr = curr.next
@@ -69,9 +73,9 @@ ll1.add_node_last(32)
 ll1.add_node_last(65)
 ll1.add_node_last(99)
 ll1.add_node_last(4)
-ll1.add_node_last(99)
+ll1.add_node_last(32)
 ll1.add_node_last(64)
 ll1.add_node_last(98) 
 ll1.print_linkedlist() 
-ll1.remove_data(99)
+ll1.remove_data(32)
 ll1.print_linkedlist()
