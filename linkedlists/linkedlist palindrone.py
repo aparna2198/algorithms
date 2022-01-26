@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jan 25 02:04:34 2022
+Created on Wed Jan 26 20:41:01 2022
 
 @author: APARNA
 """
@@ -42,38 +42,39 @@ class LinkedList:
             head = head.next
         print("Null")
         
-   
+    def is_palindrone(self):
+        slow, fast = self.head,self.head.next
         
-    def remove_data(self,data):
-        dummy = LinkedList()
-        dummy.next = self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
         
-        prev,curr = dummy, self.head
+        first,second = self.head, slow.next
         
-        while curr:
+#        reverse second half of the list
+        prev=slow.next = None
+        while second:
+            tmp = second.next
+            second.next = prev
+            prev = second 
+            second = tmp
+        
+        while first and prev:
             
-            nxt = curr.next
-            if curr.data == data:
-                # here the dummy pointer next is changed the first time as only at that time the prev is pointing to dummy later on prev pointer moved forward
-                prev.next = nxt
-            else:
-                prev = curr
-            curr = curr.next
-        
-        self.head = dummy.next
-        
-        
-        
+            if first.data != prev.data:
+                return False
+            first = first.next
+            prev = prev.next
+        return True
+    
                 
 ll1 = LinkedList()
 
 ll1.add_node_last(32)
 ll1.add_node_last(65)
 ll1.add_node_last(99)
-ll1.add_node_last(4)
+ll1.add_node_last(99)
+ll1.add_node_last(65)
 ll1.add_node_last(32)
-ll1.add_node_last(64)
-ll1.add_node_last(32) 
-ll1.print_linkedlist() 
-ll1.remove_data(32)
-ll1.print_linkedlist()
+# ll1.add_node_last(32) 
+ll1.is_palindrone() 
