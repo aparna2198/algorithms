@@ -92,27 +92,24 @@ class LinkedList:
         
     
 ll1 = LinkedList()
-ll1.add_node_last(32)
-ll1.add_node_last(65)
-ll1.add_node_last(99) 
+ll1.add_node_last(1)
+ll1.add_node_last(4)
+ll1.add_node_last(5) 
 ll1.print_linkedlist() 
 
 
 ll2 = LinkedList()
+ll2.add_node_last(1)
+ll2.add_node_last(3)
 ll2.add_node_last(4)
-ll2.add_node_last(33)
-ll2.add_node_last(64)
-ll2.add_node_last(98)
-ll2.add_node_last(100) 
+
 ll2.print_linkedlist()
 
 
 ll3 = LinkedList()
-ll3.add_node_last(4)
-ll3.add_node_last(9)
-ll3.add_node_last(81)
-ll3.add_node_last(97)
-ll3.add_node_last(105) 
+ll3.add_node_last(2)
+ll3.add_node_last(6)
+
 ll3.print_linkedlist()
 
 merged_list = LinkedList.merge_klists([ll1,ll2,ll3])

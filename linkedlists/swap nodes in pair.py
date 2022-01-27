@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jan 26 23:41:50 2022
+Created on Fri Jan 28 00:28:46 2022
 
 @author: APARNA
 """
@@ -41,53 +41,35 @@ class LinkedList:
             print(head.data,"-->",end = "\t")
             head = head.next
         print("Null")
-        
-    @staticmethod
-    def add_twonumbers(l1,l2):
-        new_list = LinkedList()
+    
+    def swap_nodes(self):
+        head = self.head
         dummy = LinkedList()
-        dummy.add_node_last(0)
+       
+        prev, cur = dummy, head
         
+        while cur and cur.next:
+            third = cur.next.next
+            second = cur.next
+            
+            second.next = cur
+            cur.next = third
+            prev.next = second
+            
+            prev = cur
+            cur = cur.next
         
-        carry = 0
-        
-        while l1 or l2 or carry:
-            v1 = l1.data if l1 else 0
-            v2 = l2.data if l2 else 0
-            
-            val = v1 + v2 + carry
-            carry = val //10
-            val = val%10
-            
-            new_list.add_node_last(val)
-            
-            
-            l1 = l1.next if l1 else None
-            l2 = l2.next if l2 else None
-            
-        return new_list
+        print(type(dummy.next))
+        self.head  = dummy.next
     
-    
-            
-        
-ll1 = LinkedList()
-
-ll1.add_node_last(9)
-ll1.add_node_last(9)
-ll1.add_node_last(9) 
-ll1.add_node_last(9)
-ll1.add_node_last(9)
-ll1.add_node_last(9)
-ll1.add_node_last(9)
-ll1.print_linkedlist() 
-
-
 ll2 = LinkedList()
-ll2.add_node_last(9)
-ll2.add_node_last(9)
-ll2.add_node_last(9)
-ll2.add_node_last(9)
+ll2.add_node_last(4)
+ll2.add_node_last(33)
+ll2.add_node_last(64)
+ll2.add_node_last(98)
+ll2.add_node_last(100) 
+ll2.add_node_last(101) 
 ll2.print_linkedlist()
 
-ll3 = LinkedList.add_twonumbers(ll1.head,ll2.head)
-ll3.print_linkedlist() 
+ll2.swap_nodes()
+ll2.print_linkedlist()
