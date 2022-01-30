@@ -46,17 +46,21 @@ class LinkedList:
         
         if not self.head or not self.head.next:
             return None
-        slow = prev = self.head
-        fast =  self.head.next
+        dummy = LinkedList()
+        dummy.next = self.head
+        slow =  dummy
+        
+        fast =  self.head
         while fast and fast.next:
-            prev = slow
             slow = slow.next
             fast = fast.next.next
         
-        if fast and not fast.next:
-            slow.next = slow.next.next
-        else:
-            prev.next = slow.next
+        
+        slow.next = slow.next.next
+        # if fast and not fast.next:
+        #     slow.next = slow.next.next
+        # else:
+        #     prev.next = slow.next
         
         
         
