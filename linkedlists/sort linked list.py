@@ -1,114 +1,86 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Jan 30 22:50:38 2022
+Created on Wed Feb  2 01:33:21 2022
 
 @author: APARNA
 """
 
-
-class Node:
-    def __init__(self,val):
+class ListNode:
+    def __init__(self,val = 0,next = None):
         self.val = val
-        self.next = None
-        
-class LinkedList:
-    
-    def __init__(self):
-        self.head = None
-    
-    def add_node_last(self,val):
-        if self.head:
-            head = self.head
-            while head:
-                if not head.next:
-                    head.next = Node(val)
-                    break
-                head = head.next
-            
-            
-        else:
-            self.head = Node(val)
+        self.next = next
     
     def print_linkedlist(self):
-        head = self.head
-        while(head):
-            print(head.val, end = "-->\t")
+        head = self
+        while head:
+            print(head.val,"-->",end = "\t")
             head = head.next
-        
-        print("None")
+        print("Null")
     
-    @staticmethod
-    def node_traverse(head):
-        while(head):
-            print(head.val, end = "-->\t")
-            head = head.next
+class Solution:
+    def sortList(self, head):
         
-        print("None")
-    
-    def sort_linklist(self,head):
         if not head or not head.next:
             return head
         
         left = head
         right = self.getmid(head)
-        
         tmp = right.next
         right.next = None
         right = tmp
         
-        left = self.sort_linklist(left)
-        right = self.sort_linklist(right)
+        left = self.sortList(left)
+        right = self.sortList(right)
         
-        return self.merge(left, right)
+        return self.merge(left,right)
     
-    def getmid(self,head):
-         
-        left = head
-        right = head.next
-        while right and right.next:
-            right = right.next
-            left = left.next
-        return left
+    def getmid(self, head):
+        
+        if not head:
+            return head
+        
+        slow = head
+        fast = head.next
+        
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
             
-    def merge(self,left, right):
+        return slow
+    
+    def merge(self, left,right):
         
-        
-        
-        curr = dummy  = LinkedList()
-         
-        if not left:
-            return right
-        if not right: 
-            print("in 66",type(left.next))
-            return left
+        dummy = ListNode()
+        curr = dummy
+        if not left:return right
+        if not right: return left
         while left and right:
             if left.val < right.val:
-                curr.add_node_last(left.val)
+                curr.next = ListNode(left.val)
                 left = left.next
             else:
-                curr.add_node_last(right.val)
+                curr.next = ListNode(right.val)
                 right = right.next
             
-            
-        while left:
-            curr.add_node_last(left.val)
-            left = left.next
+            curr  = curr.next
+        
+        if left:
+            curr.next = left
         if right:
-            curr.add_node_last(right.val)
-            right = right.next
+            curr.next = right
         
-        return dummy.head.next
+        return dummy.next
+                
+            
         
-        
+ll1 = ListNode(10)
+ll2 = ListNode(99, next = ll1)
+ll3 = ListNode(91,next = ll2)
+ll4 = ListNode(1,next = ll3)
+ll3 = ListNode(12, next = ll4)
 
-ll2 = LinkedList()
-ll2.add_node_last(101)
-ll2.add_node_last(33)
-ll2.add_node_last(98)
-ll2.add_node_last(64)
-ll2.add_node_last(4)
-ll2.add_node_last(100) 
-ll2.add_node_last(110) 
-ll2.print_linkedlist()
-new_list  = ll2.sort_linklist(ll2.head)
-LinkedList.node_traverse(new_list)
+ll3.print_linkedlist()
+sol_obj =Solution()
+sorted_list = sol_obj.sortList(ll3)
+sorted_list.print_linkedlist()
+
